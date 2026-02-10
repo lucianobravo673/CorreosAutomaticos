@@ -8,8 +8,8 @@
 
 
 /****************** CONFIG ******************/
-const SHEET_NAME = "ESSSTA";
-const SPREADSHEET_ID = "1uqV1DbPxwJ9IYN0NXrh4zlwJPnUWYD41O6eoq_lX5Qw"; // OJO: que sea EXACTO el de la URL
+const SHEET_NAME = "Nombre de Sheet";
+const SPREADSHEET_ID = "ID DE SHEET"; // OJO: que sea EXACTO el de la URL
 
 const HEADER_ROWS = 0;
 
@@ -23,17 +23,12 @@ const WINDOWS = [
   { start: "17:25", end: "17:30", handler: "sendSlot3" },
 ];
 
-const EMAIL_SUBJECT = "ÚLTIMAS PRUEBAS...";
-const EMAIL_BODY_TEXT =`PRUEBAS FINALES PARA EMPEZAR A ENVIAR MASIVAMENTE...`;
+const EMAIL_SUBJECT = "Encabezado 1";
+const EMAIL_BODY_TEXT = "Encabezado 2";
 
 const EMAIL_BODY_HTML =
 `<p>Hola, ¿cómo estás?</p>
-<p>Te escribo para que me agarres bien la gaver zurdito<br>
-<!-- C A M B I A R -->
-Adjunto pdf para que puedan evaluarlo.</p>
-<p>Muchas gracias por tu tiempo.<br>
-Saludos,<br>
-Luciano</p>`;
+<p>Cuerpo de texto<br></p>`;
 
 /****************** HELPERS ******************/
 function getSpreadsheet_() {
@@ -61,7 +56,7 @@ function isNowInWindow_(startHHMM, endHHMM) {
 
 /****************** SETUP ******************/
 function setupOnce() {
-  const cvFileId = "1CRP-G6BKHW4JA1uOvqRBJKtQS96BKQvm";
+  const cvFileId = "ID DE CV";
   PropertiesService.getScriptProperties().setProperty("CV_FILE_ID", cvFileId);
 
   ensureDailySchedulerTrigger_();
@@ -166,7 +161,7 @@ function sendAllForSlot_(slotNumber) {
       GmailApp.sendEmail(email, EMAIL_SUBJECT, EMAIL_BODY_TEXT, {
         htmlBody: EMAIL_BODY_HTML,
         attachments: [cvBlob],
-        name: "Luciano"
+        name: "NOMBRE DE USTEDES"
       });
 
       sheet.getRange(row, statusCol).setValue("SENT");
